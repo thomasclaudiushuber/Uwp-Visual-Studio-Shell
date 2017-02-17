@@ -15,6 +15,7 @@ namespace VisualStudioShell
     {
       this.InitializeComponent();
       CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = false;
+
       SetTitleBar();
       StyleTitleBar();
     }

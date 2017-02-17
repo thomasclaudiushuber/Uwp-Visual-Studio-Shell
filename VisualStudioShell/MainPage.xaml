@@ -7,8 +7,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:controls="using:VisualStudioShell.Controls"
     mc:Ignorable="d" d:DesignWidth="600">
-  <Page.Resources>
-  </Page.Resources>
 
   <Grid Background="{StaticResource VsMainBackground}">
     <Grid.RowDefinitions>
@@ -104,11 +102,20 @@
         </StackPanel>
       </Grid>
 
-
-      <Grid Grid.Column="2">
-
+      <Grid Grid.Column="1">
+        <Pivot>
+          <PivotItem Header="MainPage.xaml">
+            <RichEditBox Background="#1E1E1E" AcceptsReturn="True" x:Name="richBoxMainPage">
+              
+            </RichEditBox>
+          </PivotItem>
+          <PivotItem Header="MainPage.xaml.cs">
+            <RichEditBox Background="#1E1E1E" AcceptsReturn="True" x:Name="richBoxMainPageCodebehind"/>
+          </PivotItem>
+        </Pivot>
       </Grid>
-      
+
+
       <Grid Grid.Column="3" Width="{Binding ElementName=sidebarRight,Path=ActualHeight}">
         <StackPanel x:Name="sidebarRight" Orientation="Horizontal" VerticalAlignment="Top">
           <StackPanel.RenderTransform>
