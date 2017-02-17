@@ -26,7 +26,7 @@
       </Grid.ColumnDefinitions>
       <Rectangle Grid.ColumnSpan="4" Fill="Transparent" x:Name="backgroundElement"/>
       <Image Source="Images/VisualStudioIcon.png" Width="20" Height="20" Margin="10 6 6 6"/>
-      <TextBlock Grid.Column="1" Text="Visual Studio Shell - UWP App by Thomas Claudius Huber" VerticalAlignment="Center"/>
+      <TextBlock Grid.Column="1" Text="Visual Studio Shell - UWP" VerticalAlignment="Center"/>
       <TextBox Grid.Column="3" PlaceholderText="Quick Launch (Ctrl+Q)" Margin="0 0 200 0" Width="200"/>
     </Grid>
 
@@ -114,6 +114,11 @@
           </PivotItem>
         </Pivot>
       </Grid>
+
+      <Grid Grid.Column="2">
+        <controls:SolutionExplorer/>
+      </Grid>
+            
 
 
       <Grid Grid.Column="3" Width="{Binding ElementName=sidebarRight,Path=ActualHeight}">
