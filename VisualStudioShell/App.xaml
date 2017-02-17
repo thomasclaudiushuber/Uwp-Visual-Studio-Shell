@@ -11,6 +11,15 @@
         <ResourceDictionary Source="Resources/Button.xaml"/>
         <ResourceDictionary Source="Resources/MenuFlyoutSubItem.xaml"/>
       </ResourceDictionary.MergedDictionaries>
+      <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Default">
+          <SolidColorBrush x:Key="TextControlBackground" Color="#2D2D30"/>
+          <SolidColorBrush x:Key="TextControlBackgroundFocused" Color="#2D2D30"/>
+          <SolidColorBrush x:Key="TextControlBorderBrushFocused" Color="#444444"/>
+          <SolidColorBrush x:Key="TextControlPlaceholderForegroundFocused" Color="White"/>
+          <SolidColorBrush x:Key="TextControlForegroundFocused" Color="White"/>
+        </ResourceDictionary>
+      </ResourceDictionary.ThemeDictionaries>
     </ResourceDictionary>
   </Application.Resources>
 </Application>
