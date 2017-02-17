@@ -10,7 +10,7 @@ namespace VisualStudioShell
     public MainPage()
     {
       this.InitializeComponent();
-      var brush = (SolidColorBrush)this.Resources["VsMainBackground"];
+      var brush = (SolidColorBrush)App.Current.Resources["VsMainBackground"];
       var titleBar = ApplicationView.GetForCurrentView().TitleBar;
       if (titleBar != null)
       {

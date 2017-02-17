@@ -8,7 +8,9 @@
   xmlns:controls="using:VisualStudioShell.Controls"
     mc:Ignorable="d" d:DesignWidth="600">
   <Page.Resources>
-    <SolidColorBrush x:Key="VsMainBackground" Color="#2D2D30"/>
+
+
+
   </Page.Resources>
 
   <Grid Background="{StaticResource VsMainBackground}">
@@ -18,9 +20,7 @@
     </Grid.RowDefinitions>
     <StackPanel Orientation="Horizontal">
       <StackPanel.Resources>
-        <Style TargetType="Button">
-
-        </Style>
+        <Style TargetType="Button" BasedOn="{StaticResource MenuButton}"/>
       </StackPanel.Resources>
       <Button Content="File" VerticalAlignment="Bottom">
         <Button.Flyout>
