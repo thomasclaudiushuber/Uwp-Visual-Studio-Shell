@@ -24,11 +24,19 @@
         <ColumnDefinition Width="Auto"/>
         <ColumnDefinition Width="*"/>
         <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="Auto"/>
       </Grid.ColumnDefinitions>
       <Rectangle Grid.ColumnSpan="4" Fill="Transparent" x:Name="backgroundElement"/>
       <Image Source="Images/VisualStudioIcon.png" Width="20" Height="20" Margin="10 6 6 6"/>
       <TextBlock Grid.Column="1" Text="Visual Studio Shell - UWP" VerticalAlignment="Center"/>
-      <TextBox Grid.Column="3" PlaceholderText="Quick Launch (Ctrl+Q)" Margin="0 0 200 0" Width="200"/>
+      <Button Grid.Column="3" Click="NothingHere_Click" Style="{StaticResource ToolBarButton}">
+        <Image Source="/Images/Titlebar/Notifications.png" Width="16" Height="16"/>
+      </Button>
+      <Button Grid.Column="4" Click="NothingHere_Click" Style="{StaticResource ToolBarButton}">
+        <Image Source="/Images/Titlebar/Feedback.png" Width="16" Height="16"/>
+      </Button>
+      <TextBox Grid.Column="5" PlaceholderText="Quick Launch (Ctrl+Q)" Margin="0 0 200 0" Width="200"/>
     </Grid>
 
     <!--2. Menu-->
@@ -47,16 +55,16 @@
           <Button.Flyout>
             <MenuFlyout>
               <MenuFlyoutSubItem Text="New">
-                <controls:MenuFlyoutImageItem Text="Project" Icon="Images/Menu/NewProject.png"/>
-                <controls:MenuFlyoutImageItem Text="Website" Icon="Images/Menu/NewWebsite.png"/>
+                <controls:MenuFlyoutImageItem Click="NothingHere_Click" Text="Project" Icon="Images/Menu/NewProject.png"/>
+                <controls:MenuFlyoutImageItem Click="NothingHere_Click" Text="Website" Icon="Images/Menu/NewWebsite.png"/>
               </MenuFlyoutSubItem>
               <MenuFlyoutSeparator/>
-              <controls:MenuFlyoutImageItem Text="Close Solution" Icon="Images/Menu/CloseSolution.png"/>
+              <controls:MenuFlyoutImageItem Click="NothingHere_Click" Text="Close Solution" Icon="Images/Menu/CloseSolution.png"/>
               <MenuFlyoutSeparator/>
-              <controls:MenuFlyoutImageItem Text="Save" Icon="Images/Menu/Save.png"/>
-              <controls:MenuFlyoutImageItem Text="Save All" Icon="Images/Menu/SaveAll.png"/>
+              <controls:MenuFlyoutImageItem Click="NothingHere_Click" Text="Save" Icon="Images/Menu/Save.png"/>
+              <controls:MenuFlyoutImageItem Click="NothingHere_Click" Text="Save All" Icon="Images/Menu/SaveAll.png"/>
               <MenuFlyoutSeparator/>
-              <controls:MenuFlyoutImageItem Text="Exit" Icon="Images/Menu/CloseSolution.png"/>
+              <controls:MenuFlyoutImageItem Click="Exit_Click"  Text="Exit" Icon="Images/Menu/CloseSolution.png"/>
             </MenuFlyout>
           </Button.Flyout>
         </Button>
@@ -72,7 +80,7 @@
               <MenuFlyoutItem Text="Extensions and Updates" IsEnabled="False" />
               <MenuFlyoutItem Text="Connect to Database..." IsEnabled="False" />
               <MenuFlyoutSeparator/>
-              <MenuFlyoutItem Text="Options..." />
+              <MenuFlyoutItem Click="NothingHere_Click" Text="Options..." />
             </MenuFlyout>
           </Button.Flyout>
         </Button>
@@ -92,50 +100,7 @@
           <Setter Property="Background" Value="Transparent"/>
           <Setter Property="BorderThickness" Value="1"/>
         </Style>
-        <Style TargetType="Button">
-          <Setter Property="Padding" Value="3"/>
-          <Setter Property="Margin" Value="5 2"/>
-          <Setter Property="VerticalAlignment" Value="Stretch"/>
-          <Setter Property="Template">
-            <Setter.Value>
-              <ControlTemplate TargetType="Button">
-                <Grid x:Name="RootGrid" Background="Transparent">
-                  <VisualStateManager.VisualStateGroups>
-                    <VisualStateGroup x:Name="CommonStates">
-                      <VisualState x:Name="Normal">
-                        <Storyboard>
-                          <PointerUpThemeAnimation Storyboard.TargetName="RootGrid" />
-                        </Storyboard>
-                      </VisualState>
-                      <VisualState x:Name="PointerOver">
-                        <Storyboard>
-                          <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="#555555" />
-                          </ObjectAnimationUsingKeyFrames>
-                        </Storyboard>
-                      </VisualState>
-                      <VisualState x:Name="Pressed">
-                        <Storyboard>
-                          <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="#555555" />
-                          </ObjectAnimationUsingKeyFrames>
-                        </Storyboard>
-                      </VisualState>
-                      <VisualState x:Name="Disabled">
-                        <Storyboard>
-                          <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBackgroundDisabled}" />
-                          </ObjectAnimationUsingKeyFrames>
-                        </Storyboard>
-                      </VisualState>
-                    </VisualStateGroup>
-                  </VisualStateManager.VisualStateGroups>
-                  <ContentPresenter x:Name="ContentPresenter"/>
-                </Grid>
-              </ControlTemplate>
-            </Setter.Value>
-          </Setter>
-        </Style>
+        <Style TargetType="Button" BasedOn="{StaticResource ToolBarButton}"/>
       </StackPanel.Resources>
       <Button>
         <Image Source="/Images/Menu/Save.png" Width="16" Height="16"/>
@@ -153,7 +118,7 @@
         <ComboBoxItem Content="ARM"/>
         <ComboBoxItem Content="Any CPU"/>
       </ComboBox>
-      <ComboBox Margin="5" Width="150">
+      <ComboBox Margin="5" Width="160">
         <ComboBoxItem IsSelected="True">
           <StackPanel Orientation="Horizontal">
             <Image Source="Images/Menu/Debug.png"  Width="16" Height="16"/>

@@ -1,11 +1,14 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Windows.ApplicationModel.Core;
 using Windows.UI;
+using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+
 
 namespace VisualStudioShell
 {
@@ -15,11 +18,11 @@ namespace VisualStudioShell
     {
       this.InitializeComponent();
       this.AddHandler(UIElement.PointerPressedEvent, new PointerEventHandler(OnPointerPressed), true);
-
       SetTitleBar();
       StyleTitleBar();
       SetCodeContent();
       solutionExplorer.PropertyChanged += SolutionExplorer_PropertyChanged;
+      
 
     }
 
@@ -136,6 +139,16 @@ namespace VisualStudioShell
       {
         solutionExplorer.Visibility = Visibility.Visible;
       }
+    }
+
+    private async void NothingHere_Click(object sender, RoutedEventArgs e)
+    {
+      await new MessageDialog("Nothing here").ShowAsync();
+    }
+
+    private void Exit_Click(object sender, RoutedEventArgs e)
+    {
+      App.Current.Exit();
     }
   }
 }
