@@ -84,6 +84,13 @@ namespace VisualStudioShell.Controls
       var referencesControls = CreateTreeNode("References", false, "References.png");
       referencesControls.Add(CreateTreeNode("Universal Windows", false, "References.png"));
       projectRootNode.Add(referencesControls);
+
+      var themesNode = CreateTreeNode("Themes", true);
+      themesNode.Add(CreateTreeNode("Generic.xaml", false, "FileXaml.png"));
+      projectRootNode.Add(themesNode);
+
+      projectRootNode.Add(CreateTreeNode("MenuFlyoutImageItem", false, "FileCs.png"));
+
       return projectRootNode;
     }
 

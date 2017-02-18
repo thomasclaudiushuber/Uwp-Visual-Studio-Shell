@@ -101,20 +101,18 @@
           <Button Content="Live Visual Tree" Style="{StaticResource SideBarButtonLeft}"/>
         </StackPanel>
       </Grid>
-
       <Grid Grid.Column="1">
         <Pivot>
           <PivotItem Header="MainPage.xaml">
-            <RichEditBox Background="#1E1E1E" AcceptsReturn="True" x:Name="richBoxMainPage">
-              
-            </RichEditBox>
+            <RichEditBox Background="#1E1E1E" AcceptsReturn="True" x:Name="richBoxMainPage"/>
+
           </PivotItem>
           <PivotItem Header="MainPage.xaml.cs">
             <RichEditBox Background="#1E1E1E" AcceptsReturn="True" x:Name="richBoxMainPageCodebehind"/>
           </PivotItem>
         </Pivot>
       </Grid>
-      
+
       <Grid Grid.Column="2">
         <controls:SolutionExplorer/>
       </Grid>
