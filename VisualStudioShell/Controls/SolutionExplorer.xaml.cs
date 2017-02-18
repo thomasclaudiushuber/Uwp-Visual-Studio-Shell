@@ -33,49 +33,65 @@ namespace VisualStudioShell.Controls
 
     private void BuildTreeView()
     {
-      
-      var rootNode = CreateTreeNode("Solution 'VisualStudioShell'", false,"Solution.png");
-      var csharpProjectUI = CreateTreeNode("VisualStudioShell (Universal Windows)", false, "ProjectCSharp.png");
-      var csharpProjectControls = CreateTreeNode("VisualStudioShell.Controls (Universal Windows)", false, "ProjectCSharp.png");
-      rootNode.Add(csharpProjectUI);
-      rootNode.Add(csharpProjectControls);
 
+      var rootNode = CreateTreeNode("Solution 'VisualStudioShell'", false, "Solution.png");
+      var uiProjectNode = CreateUIProjectNode();
+      var controlsProjectNode = CreateControlsProjectNode();
+      rootNode.Add(uiProjectNode);
+      rootNode.Add(controlsProjectNode);
+
+      rootNode.IsExpanded = true;
+
+      treeView.RootNode.Add(rootNode);
+    }
+
+    private TreeNode CreateUIProjectNode()
+    {
+      var projectRootNode = CreateTreeNode("VisualStudioShell (Universal Windows)", false, "ProjectCSharp.png");
       var referencesUI = CreateTreeNode("References", false, "References.png");
       referencesUI.Add(CreateTreeNode("TreeViewControl", false, "References.png"));
       referencesUI.Add(CreateTreeNode("Universal Windows", false, "References.png"));
       referencesUI.Add(CreateTreeNode("VisualStudioShell.Controls", false, "References.png"));
-      csharpProjectUI.Add(referencesUI);
-
-      var referencesControls = CreateTreeNode("References", false, "References.png");
-      referencesControls.Add(CreateTreeNode("Universal Windows", false, "References.png"));
-      csharpProjectControls.Add(referencesControls);
+      projectRootNode.Add(referencesUI);
 
 
       var converter = CreateTreeNode("Converter", true);
       converter.Add(CreateTreeNode("BooleanToVisibilityConverter", false, "FileCs.png"));
       converter.Add(CreateTreeNode("GlyphConverter", false, "FileCs.png"));
-      csharpProjectUI.Add(converter);
+      projectRootNode.Add(converter);
 
       var appXaml = CreateTreeNode("App.xaml", false, "FileXaml.png");
       appXaml.Add(CreateTreeNode("App.xaml.cs", false, "FileXamlCs.png"));
-      csharpProjectUI.Add(appXaml);
+      projectRootNode.Add(appXaml);
 
       var mainXaml = CreateTreeNode("Main.xaml", false, "FileXaml.png");
       mainXaml.Add(CreateTreeNode("Main.xaml.cs", false, "FileXamlCs.png"));
-      csharpProjectUI.Add(mainXaml);
+      projectRootNode.Add(mainXaml);
 
 
-      rootNode.IsExpanded = true;
-      csharpProjectUI.IsExpanded = true;
-      
-      treeView.RootNode.Add(rootNode);
+      projectRootNode.IsExpanded = true;
+      referencesUI.IsExpanded = true;
+      converter.IsExpanded = true;
+      appXaml.IsExpanded = true;
+      mainXaml.IsExpanded = true;
+
+      return projectRootNode;
+    }
+
+    private TreeNode CreateControlsProjectNode()
+    {
+      var projectRootNode = CreateTreeNode("VisualStudioShell.Controls (Universal Windows)", false, "ProjectCSharp.png");
+      var referencesControls = CreateTreeNode("References", false, "References.png");
+      referencesControls.Add(CreateTreeNode("Universal Windows", false, "References.png"));
+      projectRootNode.Add(referencesControls);
+      return projectRootNode;
     }
 
     private TreeNode CreateTreeNode(string name, bool isFolder, string image = null)
     {
       return new TreeNode
       {
-        Data = new TreeNodeData(name,isFolder, image)
+        Data = new TreeNodeData(name, isFolder, image)
       };
     }
   }
@@ -85,7 +101,7 @@ namespace VisualStudioShell.Controls
     {
       Name = name;
       IsFolder = isFolder;
-      ImagePath = "/Images/SolutionExplorer/"+ image;
+      ImagePath = "/Images/SolutionExplorer/" + image;
     }
     public string ImagePath { get; set; }
     public string Name { get; set; }

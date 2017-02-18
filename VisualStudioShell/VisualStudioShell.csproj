@@ -127,10 +127,12 @@
     <Content Include="Assets\Square44x44Logo.targetsize-256.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-32.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-48.png" />
-    <Content Include="Images\CloseSolution.ico" />
-    <Content Include="Images\Save.ico" />
-    <Content Include="Images\SaveAll.ico" />
+    <Content Include="Images\Menu\CloseSolution.ico" />
+    <Content Include="Images\Menu\Save.ico" />
+    <Content Include="Images\Menu\SaveAll.ico" />
     <Content Include="Images\SolutionExplorer\FileCs.png" />
+    <Content Include="Images\Menu\NewProject.png" />
+    <Content Include="Images\Menu\NewWebsite.png" />
     <Content Include="Images\SolutionExplorer\FileXaml.png" />
     <Content Include="Images\SolutionExplorer\FileXamlCs.png" />
     <Content Include="Images\SolutionExplorer\ProjectCSharp.png" />

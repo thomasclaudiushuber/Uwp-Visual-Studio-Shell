@@ -19,35 +19,36 @@ mc:Ignorable="d"
     <converter:BooleanToVisibilityConverter x:Key="inverseBooleanToVisibilityConverter" IsInverse="True" />
 
     <DataTemplate x:Key="treeViewItemTemplate">
-      <StackPanel Orientation="Horizontal" Height="40" Margin="{Binding Depth, Converter={StaticResource IntToIndConverter}}" AllowDrop="{Binding Data.IsFolder}">
-        <FontIcon x:Name="expandCollapseChevron" 
-                          Glyph="{Binding IsExpanded, Converter={StaticResource expandCollapseGlyphConverter}}"
-                          Visibility="{Binding HasItems, Converter={StaticResource booleanToVisibilityConverter}}"                           
-                          FontSize="12"
-                          Margin="12,8,12,8" 
-                          FontFamily="Segoe MDL2 Assets"                          
-                          />
-      
+      <StackPanel Orientation="Horizontal" Margin="{Binding Depth, Converter={StaticResource IntToIndConverter}}" AllowDrop="{Binding Data.IsFolder}">
+        <Grid Width="10">
+          <Grid Visibility="{Binding HasItems, Converter={StaticResource booleanToVisibilityConverter}}">
+            <Polygon Visibility="{Binding IsExpanded, Converter={StaticResource inverseBooleanToVisibilityConverter}}" 
+                     Stroke="White" StrokeThickness="1" Points="0,0 0,8 4,4" VerticalAlignment="Center"/>
+            <Polygon Visibility="{Binding IsExpanded, Converter={StaticResource booleanToVisibilityConverter}}" 
+                     Stroke="White" StrokeThickness="1" Fill="White" Points="0,8 6,2 6,8" VerticalAlignment="Center"/>
+          </Grid>
+        </Grid>
+
         <Grid>
           <FontIcon x:Name ="expandCollapseFolder" 
                               Glyph="{Binding IsExpanded, Converter={StaticResource folderGlyphConverter}}" 
                               Foreground="#FFFFE793" 
                               FontSize="16" 
-                              Margin="0,8,12,8" 
+                              Margin="0,2,0,2" 
                               FontFamily="Segoe MDL2 Assets"
                               Visibility="{Binding Data.IsFolder, Converter={StaticResource booleanToVisibilityConverter}}"
                               />
 
-          <Image Source="{Binding Data.ImagePath}"  Visibility="{Binding Data.IsFolder, Converter={StaticResource inverseBooleanToVisibilityConverter}}" Width="16" Height="16" Margin="4"/>
+          <Image Source="{Binding Data.ImagePath}"  Visibility="{Binding Data.IsFolder, Converter={StaticResource inverseBooleanToVisibilityConverter}}" Width="16" Height="16" Margin="4 0"/>
 
-        
+
         </Grid>
         <TextBlock Text="{Binding Data.Name}" 
                            HorizontalAlignment="Stretch" 
                            VerticalAlignment="Center"  
                            FontWeight="Medium"
-                           FontFamily="Segoe MDL2 Assests"                           
-                           Style="{ThemeResource BodyTextBlockStyle}"/>
+                           FontFamily="Segoe MDL2 Assests"  
+                           FontSize="12"/>
       </StackPanel>
     </DataTemplate>
   </UserControl.Resources>
@@ -57,12 +58,19 @@ mc:Ignorable="d"
         <RowDefinition Height="Auto"/>
         <RowDefinition/>
       </Grid.RowDefinitions>
-      <TextBlock Text="Solution Explorer"/>
+      <Rectangle Fill="{StaticResource VsHighlight}"/>
+      <TextBlock Text="Solution Explorer" Margin="2" HorizontalAlignment="Left"/>
 
       <tv:TreeView Grid.Row="1" x:Name="treeView" 
                    ItemTemplate="{StaticResource treeViewItemTemplate}"
                    IsItemClickEnabled="True"
                    >
+        <tv:TreeView.ItemContainerStyle>
+          <Style TargetType="tv:TreeViewItem">
+            <Setter Property="MinHeight" Value="0"/>
+            <Setter Property="Padding" Value="2"/>
+          </Style>
+        </tv:TreeView.ItemContainerStyle>
         <tv:TreeView.ItemContainerTransitions>
           <TransitionCollection>
             <ContentThemeTransition />

@@ -18,6 +18,7 @@
           <SolidColorBrush x:Key="TextControlBorderBrushFocused" Color="#444444"/>
           <SolidColorBrush x:Key="TextControlPlaceholderForegroundFocused" Color="White"/>
           <SolidColorBrush x:Key="TextControlForegroundFocused" Color="White"/>
+          <SolidColorBrush x:Key="SystemControlHighlightListAccentLowBrush" Color="#3399FF"/>
         </ResourceDictionary>
       </ResourceDictionary.ThemeDictionaries>
     </ResourceDictionary>

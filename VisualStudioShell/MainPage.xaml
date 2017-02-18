@@ -46,16 +46,16 @@
           <Button.Flyout>
             <MenuFlyout>
               <MenuFlyoutSubItem Text="New">
-                <controls:MenuFlyoutImageItem Text="Project"/>
-                <controls:MenuFlyoutImageItem Text="Website"/>
+                <controls:MenuFlyoutImageItem Text="Project" Icon="Images/Menu/NewProject.png"/>
+                <controls:MenuFlyoutImageItem Text="Website" Icon="Images/Menu/NewWebsite.png"/>
               </MenuFlyoutSubItem>
               <MenuFlyoutSeparator/>
-              <controls:MenuFlyoutImageItem Text="Close Solution" Icon="Images/CloseSolution.ico"/>
+              <controls:MenuFlyoutImageItem Text="Close Solution" Icon="Images/Menu/CloseSolution.ico"/>
               <MenuFlyoutSeparator/>
-              <controls:MenuFlyoutImageItem Text="Save" Icon="Images/Save.ico"/>
-              <controls:MenuFlyoutImageItem Text="Save All" Icon="Images/SaveAll.ico"/>
+              <controls:MenuFlyoutImageItem Text="Save" Icon="Images/Menu/Save.ico"/>
+              <controls:MenuFlyoutImageItem Text="Save All" Icon="Images/Menu/SaveAll.ico"/>
               <MenuFlyoutSeparator/>
-              <controls:MenuFlyoutImageItem Text="Exit" Icon="Images/CloseSolution.ico"/>
+              <controls:MenuFlyoutImageItem Text="Exit" Icon="Images/Menu/CloseSolution.ico"/>
             </MenuFlyout>
           </Button.Flyout>
         </Button>
@@ -115,13 +115,9 @@
         </Pivot>
       </Grid>
       
-      
-
       <Grid Grid.Column="2">
         <controls:SolutionExplorer/>
       </Grid>
-            
-
 
       <Grid Grid.Column="3" Width="{Binding ElementName=sidebarRight,Path=ActualHeight}">
         <StackPanel x:Name="sidebarRight" Orientation="Horizontal" VerticalAlignment="Top">
