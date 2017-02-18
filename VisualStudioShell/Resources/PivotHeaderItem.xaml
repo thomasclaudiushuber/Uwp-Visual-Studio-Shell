@@ -10,7 +10,8 @@
     <Setter Property="Background" Value="{ThemeResource PivotHeaderItemBackgroundUnselected}" />
     <Setter Property="Foreground" Value="{ThemeResource PivotHeaderItemForegroundUnselected}" />
     <Setter Property="Padding" Value="{ThemeResource PivotHeaderItemMargin}" />
-    <Setter Property="Height" Value="Auto" />
+    <!--Use 28, it's also used by the solution explorer-->
+    <Setter Property="Height" Value="28" /> 
     <Setter Property="VerticalContentAlignment" Value="Center" />
     <Setter Property="IsTabStop" Value="False" />
     <Setter Property="Template">
