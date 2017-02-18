@@ -102,16 +102,4 @@ namespace VisualStudioShell.Controls
       };
     }
   }
-  public class TreeNodeData
-  {
-    public TreeNodeData(string name, bool isFolder, string image = null)
-    {
-      Name = name;
-      IsFolder = isFolder;
-      ImagePath = "/Images/SolutionExplorer/" + image;
-    }
-    public string ImagePath { get; set; }
-    public string Name { get; set; }
-    public bool IsFolder { get; set; }
-  }
 }

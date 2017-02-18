@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="VisualStudioShell.Controls.Toolbox"
+    x:Class="VisualStudioShell.Controls.Notifications"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:VisualStudioShell.Controls"
@@ -15,9 +15,10 @@
         <RowDefinition/>
       </Grid.RowDefinitions>
       <Rectangle Fill="{StaticResource VsHighlight}"/>
-      <TextBlock Text="Toolbox" Margin="2" HorizontalAlignment="Left"/>
+      <TextBlock Text="Notifications" Margin="2" HorizontalAlignment="Left"/>
 
-
+      <TextBlock Grid.Row="1" Text="Nothing to show here. :-) Go to the other side of the Window and view for example the Live Visual Tree" 
+                 Margin="5" TextWrapping="Wrap"/>
     </Grid>
   </Border>
 </UserControl>

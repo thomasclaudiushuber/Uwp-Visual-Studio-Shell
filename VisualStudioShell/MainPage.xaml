@@ -12,6 +12,7 @@
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto"/>
       <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
       <RowDefinition/>
       <RowDefinition Height="Auto"/>
     </Grid.RowDefinitions>
@@ -83,9 +84,11 @@
       <TextBlock Grid.Column="1" Text="Thomas Claudius Huber" VerticalAlignment="Center"/>
       <Image Grid.Column="2" Source="Images/thomas.png" Width="30" Height="30" VerticalAlignment="Center" Margin="10 4"/>
     </Grid>
+    
+    <!--3. Toolbar-->
 
-    <!--3. Main Area-->
-    <Grid Grid.Row="2">
+    <!--4. Main Area-->
+    <Grid Grid.Row="3">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="Auto"/>
         <ColumnDefinition Width="*"/>
@@ -97,35 +100,42 @@
           <StackPanel.RenderTransform>
             <CompositeTransform Rotation="90" TranslateX="{Binding ElementName=sidebarLeft,Path=ActualHeight}"/>
           </StackPanel.RenderTransform>
-          <Button Content="Toolbox" Style="{StaticResource SideBarButtonLeft}"/>
-          <Button Content="Live Visual Tree" Style="{StaticResource SideBarButtonLeft}"/>
+          <Button Content="Toolbox" x:Name="btnToolbox" Click="SidebarButton_Click" Style="{StaticResource SideBarButtonLeft}"/>
+          <Button Content="Live Visual Tree" x:Name="btnLiveVisualTree" Click="SidebarButton_Click" Style="{StaticResource SideBarButtonLeft}"/>
         </StackPanel>
       </Grid>
-      <Grid Grid.Column="1">
-        <Pivot>
-          <PivotItem Header="MainPage.xaml">
-            <RichEditBox Background="#1E1E1E" AcceptsReturn="True" x:Name="richBoxMainPage"/>
 
-          </PivotItem>
-          <PivotItem Header="MainPage.xaml.cs">
-            <RichEditBox Background="#1E1E1E" AcceptsReturn="True" x:Name="richBoxMainPageCodebehind"/>
-          </PivotItem>
-        </Pivot>
-      </Grid>
+      <Pivot Grid.Column="1">
+        <PivotItem Header="MainPage.xaml">
+          <RichEditBox Background="#1E1E1E" AcceptsReturn="True" x:Name="richBoxMainPage"/>
 
-      <Grid Grid.Column="2">
-        <controls:SolutionExplorer/>
-      </Grid>
+        </PivotItem>
+        <PivotItem Header="MainPage.xaml.cs">
+          <RichEditBox Background="#1E1E1E" AcceptsReturn="True" x:Name="richBoxMainPageCodebehind"/>
+        </PivotItem>
+      </Pivot>
+
+      <controls:SolutionExplorer Grid.Column="2" Width="300"/>
 
       <Grid Grid.Column="3" Width="{Binding ElementName=sidebarRight,Path=ActualHeight}">
         <StackPanel x:Name="sidebarRight" Orientation="Horizontal" VerticalAlignment="Top">
           <StackPanel.RenderTransform>
             <CompositeTransform Rotation="90" TranslateX="{Binding ElementName=sidebarRight,Path=ActualHeight}"/>
           </StackPanel.RenderTransform>
-          <Button Content="Notifications" Style="{StaticResource SideBarButtonRight}"/>
-          <Button Content="Diagnostic Tools" Style="{StaticResource SideBarButtonRight}"/>
+          <Button Content="Notifications" x:Name="btnNotifications"  Click="SidebarButton_Click" Style="{StaticResource SideBarButtonRight}"/>
+          <Button Content="Diagnostic Tools" x:Name="btnDiagnosticTools" Click="SidebarButton_Click" Style="{StaticResource SideBarButtonRight}"/>
         </StackPanel>
       </Grid>
+
+      <controls:Toolbox x:Name="toolBox" Visibility="Collapsed" Width="200" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
+      <controls:LiveVisualTree x:Name="liveVisualTree" Visibility="Collapsed" Width="400" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
+      <controls:Notifications x:Name="notifications" Visibility="Collapsed" Width="200" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Right"/>
+      <controls:DiagnosticTools x:Name="diagnosticTools" Visibility="Collapsed" Width="350" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Right"/>
+    </Grid>
+    
+    <!--5. Footer-->
+    <Grid Grid.Row="4" Background="{StaticResource VsHighlight}">
+      <TextBlock Text="Ready" Margin="4"/>
     </Grid>
   </Grid>
 </Page>
