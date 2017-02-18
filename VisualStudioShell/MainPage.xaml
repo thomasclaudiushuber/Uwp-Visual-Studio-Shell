@@ -51,12 +51,12 @@
                 <controls:MenuFlyoutImageItem Text="Website" Icon="Images/Menu/NewWebsite.png"/>
               </MenuFlyoutSubItem>
               <MenuFlyoutSeparator/>
-              <controls:MenuFlyoutImageItem Text="Close Solution" Icon="Images/Menu/CloseSolution.ico"/>
+              <controls:MenuFlyoutImageItem Text="Close Solution" Icon="Images/Menu/CloseSolution.png"/>
               <MenuFlyoutSeparator/>
-              <controls:MenuFlyoutImageItem Text="Save" Icon="Images/Menu/Save.ico"/>
-              <controls:MenuFlyoutImageItem Text="Save All" Icon="Images/Menu/SaveAll.ico"/>
+              <controls:MenuFlyoutImageItem Text="Save" Icon="Images/Menu/Save.png"/>
+              <controls:MenuFlyoutImageItem Text="Save All" Icon="Images/Menu/SaveAll.png"/>
               <MenuFlyoutSeparator/>
-              <controls:MenuFlyoutImageItem Text="Exit" Icon="Images/Menu/CloseSolution.ico"/>
+              <controls:MenuFlyoutImageItem Text="Exit" Icon="Images/Menu/CloseSolution.png"/>
             </MenuFlyout>
           </Button.Flyout>
         </Button>
@@ -84,8 +84,90 @@
       <TextBlock Grid.Column="1" Text="Thomas Claudius Huber" VerticalAlignment="Center"/>
       <Image Grid.Column="2" Source="Images/thomas.png" Width="30" Height="30" VerticalAlignment="Center" Margin="10 4"/>
     </Grid>
-    
+
     <!--3. Toolbar-->
+    <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="10 0 0 0">
+      <StackPanel.Resources>
+        <Style TargetType="ComboBox">
+          <Setter Property="Background" Value="Transparent"/>
+          <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+        <Style TargetType="Button">
+          <Setter Property="Padding" Value="3"/>
+          <Setter Property="Margin" Value="5 2"/>
+          <Setter Property="VerticalAlignment" Value="Stretch"/>
+          <Setter Property="Template">
+            <Setter.Value>
+              <ControlTemplate TargetType="Button">
+                <Grid x:Name="RootGrid" Background="Transparent">
+                  <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                      <VisualState x:Name="Normal">
+                        <Storyboard>
+                          <PointerUpThemeAnimation Storyboard.TargetName="RootGrid" />
+                        </Storyboard>
+                      </VisualState>
+                      <VisualState x:Name="PointerOver">
+                        <Storyboard>
+                          <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="#555555" />
+                          </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                      </VisualState>
+                      <VisualState x:Name="Pressed">
+                        <Storyboard>
+                          <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="#555555" />
+                          </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                      </VisualState>
+                      <VisualState x:Name="Disabled">
+                        <Storyboard>
+                          <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBackgroundDisabled}" />
+                          </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                      </VisualState>
+                    </VisualStateGroup>
+                  </VisualStateManager.VisualStateGroups>
+                  <ContentPresenter x:Name="ContentPresenter"/>
+                </Grid>
+              </ControlTemplate>
+            </Setter.Value>
+          </Setter>
+        </Style>
+      </StackPanel.Resources>
+      <Button>
+        <Image Source="/Images/Menu/Save.png" Width="16" Height="16"/>
+      </Button>
+      <Button>
+        <Image Source="/Images/Menu/SaveAll.png" Width="16" Height="16"/>
+      </Button>
+      <ComboBox Margin="5" Width="100">
+        <ComboBoxItem Content="Debug" IsSelected="True"/>
+        <ComboBoxItem Content="Release"/>
+      </ComboBox>
+      <ComboBox Margin="5" Width="100">
+        <ComboBoxItem Content="x86" IsSelected="True"/>
+        <ComboBoxItem Content="x64"/>
+        <ComboBoxItem Content="ARM"/>
+        <ComboBoxItem Content="Any CPU"/>
+      </ComboBox>
+      <ComboBox Margin="5" Width="150">
+        <ComboBoxItem IsSelected="True">
+          <StackPanel Orientation="Horizontal">
+            <Image Source="Images/Menu/Debug.png"  Width="16" Height="16"/>
+            <TextBlock Text="Local Machine"/>
+          </StackPanel>
+        </ComboBoxItem>
+        <ComboBoxItem>
+          <StackPanel Orientation="Horizontal">
+            <Image Source="Images/Menu/Debug.png"  Width="16" Height="16"/>
+            <TextBlock Text="Simulator"/>
+          </StackPanel>
+        </ComboBoxItem>
+      </ComboBox>
+    </StackPanel>
 
     <!--4. Main Area-->
     <Grid Grid.Row="3" x:Name="mainGrid">
@@ -106,12 +188,11 @@
       </Grid>
 
       <Pivot Grid.Column="1">
-        <PivotItem Header="MainPage.xaml">
-          <RichEditBox Background="#1E1E1E" AcceptsReturn="True" x:Name="richBoxMainPage"/>
-
-        </PivotItem>
         <PivotItem Header="MainPage.xaml.cs">
           <RichEditBox Background="#1E1E1E" AcceptsReturn="True" x:Name="richBoxMainPageCodebehind"/>
+        </PivotItem>
+        <PivotItem Header="MainPage.xaml">
+          <RichEditBox Background="#1E1E1E" AcceptsReturn="True" x:Name="richBoxMainPage"/>
         </PivotItem>
       </Pivot>
 
@@ -135,7 +216,7 @@
       <controls:Notifications x:Name="notifications" Visibility="Collapsed" Width="200" Grid.ColumnSpan="4" HorizontalAlignment="Right" Margin="0 0 30 0"/>
       <controls:DiagnosticTools x:Name="diagnosticTools" Visibility="Collapsed" Width="350" Grid.ColumnSpan="4" HorizontalAlignment="Right" Margin="0 0 30 0"/>
     </Grid>
-    
+
     <!--5. Footer-->
     <Grid Grid.Row="4" Background="{StaticResource VsHighlight}">
       <TextBlock Text="Ready" Margin="4"/>

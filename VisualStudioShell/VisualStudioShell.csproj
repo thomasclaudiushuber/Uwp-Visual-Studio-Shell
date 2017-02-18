@@ -140,9 +140,10 @@
     <Content Include="Assets\Square44x44Logo.targetsize-256.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-32.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-48.png" />
-    <Content Include="Images\Menu\CloseSolution.ico" />
-    <Content Include="Images\Menu\Save.ico" />
-    <Content Include="Images\Menu\SaveAll.ico" />
+    <Content Include="Images\Menu\CloseSolution.png" />
+    <Content Include="Images\Menu\Debug.png" />
+    <Content Include="Images\Menu\Save.png" />
+    <Content Include="Images\Menu\SaveAll.png" />
     <Content Include="Images\SolutionExplorer\FileCs.png" />
     <Content Include="Images\Menu\NewProject.png" />
     <Content Include="Images\Menu\NewWebsite.png" />
