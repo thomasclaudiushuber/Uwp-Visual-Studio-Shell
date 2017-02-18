@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:controls="using:VisualStudioShell.Controls"
   xmlns:wrapPanel="using:Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel"
+  xmlns:controls1="using:Microsoft.Toolkit.Uwp.UI.Controls"
   mc:Ignorable="d" d:DesignWidth="600">
 
   <Grid Background="{StaticResource VsMainBackground}">
@@ -141,7 +142,7 @@
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="Auto"/>
         <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="300" x:Name="columnDefinitionForPinnedSolutionExplorer"/>
+        <ColumnDefinition Width="302" x:Name="columnDefinitionForPinnedSolutionExplorer" />
         <ColumnDefinition Width="Auto"/>
       </Grid.ColumnDefinitions>
       <Grid Width="{Binding ElementName=sidebarLeft,Path=ActualHeight}">
@@ -165,23 +166,110 @@
 
       <!--Don't put this control into a column, as we're removing the column definition when it is unpinned and pinned.
       When it is unpinned, it should hover over the rest (the rest is the Pivot)-->
-      <controls:SolutionExplorer x:Name="solutionExplorer" Width="300" HorizontalAlignment="Right" Grid.ColumnSpan="4" Margin="0 0 30 0"/>
+      <Grid x:Name="solutionExplorerGrid" HorizontalAlignment="Right" Grid.ColumnSpan="4" Margin="0 0 30 0">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="Auto"/>
+          <ColumnDefinition Width="300" x:Name="columnWithSolutionExplorerControl"/>
+        </Grid.ColumnDefinitions>
+        <controls:SolutionExplorer x:Name="solutionExplorer" Grid.Column="2" />
+        <controls1:GridSplitter x:Name="gridSplitterSolutionExplorer" ManipulationDelta="GridSpliterSolutionExplorer_ManipulationDelta"
+            Grid.Column="1"
+                Width="5"
+            ResizeBehavior="BasedOnAlignment"
+            ResizeDirection="Auto"
+                Background="Transparent"
+                Foreground="White" 
+                FontSize="13">
+
+        </controls1:GridSplitter>
+      </Grid>
 
       <Grid Grid.Column="3" Width="{Binding ElementName=sidebarRight,Path=ActualHeight}">
         <StackPanel x:Name="sidebarRight" Orientation="Horizontal" VerticalAlignment="Top">
           <StackPanel.RenderTransform>
             <CompositeTransform Rotation="90" TranslateX="{Binding ElementName=sidebarRight,Path=ActualHeight}"/>
           </StackPanel.RenderTransform>
-          <Button Content="Solution Explorer" x:Name="btnSolutionExplorer"  Click="SidebarButton_Click" Style="{StaticResource SideBarButtonRight}" Visibility="Collapsed"/>
+          <Button Content="Solution Explorer" x:Name="btnSideBarSolutionExplorer"  Click="SidebarButton_Click" Style="{StaticResource SideBarButtonRight}" Visibility="Collapsed"/>
           <Button Content="Notifications" x:Name="btnNotifications"  Click="SidebarButton_Click" Style="{StaticResource SideBarButtonRight}"/>
           <Button Content="Diagnostic Tools" x:Name="btnDiagnosticTools" Click="SidebarButton_Click" Style="{StaticResource SideBarButtonRight}"/>
         </StackPanel>
       </Grid>
 
-      <controls:Toolbox x:Name="toolBox" Visibility="Collapsed" Width="200" Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="30 0 0 0"/>
-      <controls:LiveVisualTree x:Name="liveVisualTree" Visibility="Collapsed" Width="400" Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="30 0 0 0"/>
-      <controls:Notifications x:Name="notifications" Visibility="Collapsed" Width="200" Grid.ColumnSpan="4" HorizontalAlignment="Right" Margin="0 0 30 0"/>
-      <controls:DiagnosticTools x:Name="diagnosticTools" Visibility="Collapsed" Width="350" Grid.ColumnSpan="4" HorizontalAlignment="Right" Margin="0 0 30 0"/>
+      <Grid x:Name="toolBoxGrid" Visibility="Collapsed" Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="30 0 0 0">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="200"/>
+          <ColumnDefinition Width="Auto"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <controls:Toolbox />
+        <controls1:GridSplitter
+            Grid.Column="1"
+                Width="11"
+          Margin="-5 0 0 0"
+            ResizeBehavior="BasedOnAlignment"
+            ResizeDirection="Auto"
+                Background="Transparent"
+                Foreground="White" 
+                FontSize="13">
+        </controls1:GridSplitter>
+      </Grid>
+      <Grid x:Name="liveVisualTreeGrid" Visibility="Collapsed" Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="30 0 0 0">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="400"/>
+          <ColumnDefinition Width="Auto"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <controls:LiveVisualTree />
+        <controls1:GridSplitter
+            Grid.Column="1"
+                Width="11"
+          Margin="-5 0 0 0"
+            ResizeBehavior="BasedOnAlignment"
+            ResizeDirection="Auto"
+                Background="Transparent"
+                Foreground="White" 
+                FontSize="13">
+        </controls1:GridSplitter>
+      </Grid>
+
+      <Grid x:Name="notificationsGrid" Visibility="Collapsed" Grid.ColumnSpan="4" HorizontalAlignment="Right" Margin="0 0 30 0">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="Auto"/>
+          <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+        <controls:Notifications Grid.Column="2" />
+        <controls1:GridSplitter
+            Grid.Column="1"
+                Width="11"
+          Margin="0 0 -5 0"
+            ResizeBehavior="BasedOnAlignment"
+            ResizeDirection="Auto"
+                Background="Transparent"
+                Foreground="White" 
+                FontSize="13">
+        </controls1:GridSplitter>
+      </Grid>
+
+      <Grid x:Name="diagnosticToolsGrid" Visibility="Collapsed" Grid.ColumnSpan="4" HorizontalAlignment="Right" Margin="0 0 30 0">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="Auto"/>
+          <ColumnDefinition Width="400"/>
+        </Grid.ColumnDefinitions>
+        <controls:DiagnosticTools Grid.Column="2" />
+        <controls1:GridSplitter
+            Grid.Column="1"
+                Width="11"
+          Margin="0 0 -5 0"
+            ResizeBehavior="BasedOnAlignment"
+            ResizeDirection="Auto"
+                Background="Transparent"
+                Foreground="White" 
+                FontSize="13">
+        </controls1:GridSplitter>
+      </Grid>
     </Grid>
 
     <!--5. Footer-->

@@ -22,8 +22,6 @@ namespace VisualStudioShell
       StyleTitleBar();
       SetCodeContent();
       solutionExplorer.PropertyChanged += SolutionExplorer_PropertyChanged;
-      
-
     }
 
     private void SetCodeContent()
@@ -56,27 +54,27 @@ namespace VisualStudioShell
         if (solutionExplorer.IsPinned)
         {
           mainGrid.ColumnDefinitions.Insert(2, columnDefinitionForPinnedSolutionExplorer);
-          btnSolutionExplorer.Visibility = Visibility.Collapsed;
+          btnSideBarSolutionExplorer.Visibility = Visibility.Collapsed;
         }
         else
         {
           mainGrid.ColumnDefinitions.Remove(columnDefinitionForPinnedSolutionExplorer);
-          btnSolutionExplorer.Visibility = Visibility.Visible;
-          solutionExplorer.Visibility = Visibility.Collapsed;
+          btnSideBarSolutionExplorer.Visibility = Visibility.Visible;
+          solutionExplorerGrid.Visibility = Visibility.Collapsed;
         }
       }
     }
 
     private void OnPointerPressed(object sender, PointerRoutedEventArgs e)
     {
-      HideElementIfNotPressedInside(toolBox, e);
-      HideElementIfNotPressedInside(liveVisualTree, e);
-      HideElementIfNotPressedInside(notifications, e);
-      HideElementIfNotPressedInside(diagnosticTools, e);
+      HideElementIfNotPressedInside(toolBoxGrid, e);
+      HideElementIfNotPressedInside(liveVisualTreeGrid, e);
+      HideElementIfNotPressedInside(notificationsGrid, e);
+      HideElementIfNotPressedInside(diagnosticToolsGrid, e);
 
       if (!solutionExplorer.IsPinned)
       {
-        HideElementIfNotPressedInside(solutionExplorer, e);
+        HideElementIfNotPressedInside(solutionExplorerGrid, e);
       }
     }
 
@@ -121,23 +119,23 @@ namespace VisualStudioShell
     {
       if (sender == btnToolbox)
       {
-        toolBox.Visibility = Visibility.Visible;
+        toolBoxGrid.Visibility = Visibility.Visible;
       }
       else if (sender == btnLiveVisualTree)
       {
-        liveVisualTree.Visibility = Visibility.Visible;
+        liveVisualTreeGrid.Visibility = Visibility.Visible;
       }
       else if (sender == btnNotifications)
       {
-        notifications.Visibility = Visibility.Visible;
+        notificationsGrid.Visibility = Visibility.Visible;
       }
       else if (sender == btnDiagnosticTools)
       {
-        diagnosticTools.Visibility = Visibility.Visible;
+        diagnosticToolsGrid.Visibility = Visibility.Visible;
       }
-      else if (sender == btnSolutionExplorer)
+      else if (sender == btnSideBarSolutionExplorer)
       {
-        solutionExplorer.Visibility = Visibility.Visible;
+        solutionExplorerGrid.Visibility = Visibility.Visible;
       }
     }
 
@@ -149,6 +147,11 @@ namespace VisualStudioShell
     private void Exit_Click(object sender, RoutedEventArgs e)
     {
       App.Current.Exit();
+    }
+
+    private void GridSpliterSolutionExplorer_ManipulationDelta(object sender, ManipulationDeltaRoutedEventArgs e)
+    {
+      columnDefinitionForPinnedSolutionExplorer.Width = new GridLength(columnWithSolutionExplorerControl.Width.Value + 2);// Just add 8 for the splitter
     }
   }
 }
