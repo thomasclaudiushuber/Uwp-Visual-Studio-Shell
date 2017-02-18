@@ -6,7 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:controls="using:VisualStudioShell.Controls"
-    mc:Ignorable="d" d:DesignWidth="600">
+  xmlns:wrapPanel="using:Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel"
+  mc:Ignorable="d" d:DesignWidth="600">
 
   <Grid Background="{StaticResource VsMainBackground}">
     <Grid.RowDefinitions>
@@ -46,10 +47,10 @@
         <ColumnDefinition Width="Auto"/>
         <ColumnDefinition Width="Auto"/>
       </Grid.ColumnDefinitions>
-      <StackPanel Orientation="Horizontal">
-        <StackPanel.Resources>
+      <wrapPanel:WrapPanel Orientation="Horizontal">
+        <wrapPanel:WrapPanel.Resources>
           <Style TargetType="Button" BasedOn="{StaticResource MenuButton}"/>
-        </StackPanel.Resources>
+        </wrapPanel:WrapPanel.Resources>
         <!--Menu-->
         <Button Content="File">
           <Button.Flyout>
@@ -88,21 +89,21 @@
         <Button Content="Analyze" IsEnabled="False"/>
         <Button Content="Window" IsEnabled="False"/>
         <Button Content="Help" IsEnabled="False"/>
-      </StackPanel>
+      </wrapPanel:WrapPanel>
       <TextBlock Grid.Column="1" Text="Thomas Claudius Huber" VerticalAlignment="Center"/>
       <Image Grid.Column="2" Source="Images/thomas.png" Width="30" Height="30" VerticalAlignment="Center" Margin="10 4"/>
     </Grid>
 
     <!--3. Toolbar-->
-    <!--Note: Commandbar could be an option, but it doesn't do the classic stacking from left to right--> 
-    <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="10 0 0 0">
-      <StackPanel.Resources>
+    <!--Note: Commandbar could be an option, but it doesn't do the classic stacking from left to right-->
+    <wrapPanel:WrapPanel Grid.Row="2" Orientation="Horizontal" Margin="10 0 0 0">
+      <wrapPanel:WrapPanel.Resources>
         <Style TargetType="ComboBox">
           <Setter Property="Background" Value="Transparent"/>
           <Setter Property="BorderThickness" Value="1"/>
         </Style>
         <Style TargetType="Button" BasedOn="{StaticResource ToolBarButton}"/>
-      </StackPanel.Resources>
+      </wrapPanel:WrapPanel.Resources>
       <Button>
         <Image Source="/Images/Menu/Save.png" Width="16" Height="16"/>
       </Button>
@@ -133,7 +134,7 @@
           </StackPanel>
         </ComboBoxItem>
       </ComboBox>
-    </StackPanel>
+    </wrapPanel:WrapPanel>
 
     <!--4. Main Area-->
     <Grid Grid.Row="3" x:Name="mainGrid">
