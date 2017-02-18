@@ -19,13 +19,30 @@ namespace VisualStudioShell
     public MainPage()
     {
       this.InitializeComponent();
-      CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = false;
       this.AddHandler(UIElement.PointerPressedEvent, new PointerEventHandler(OnPointerPressed), true);
 
       SetTitleBar();
       StyleTitleBar();
+      solutionExplorer.PropertyChanged += SolutionExplorer_PropertyChanged;
     }
 
+    private void SolutionExplorer_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+    {
+      if(e.PropertyName == nameof(solutionExplorer.IsPinned))
+      {
+        if(solutionExplorer.IsPinned)
+        {
+          mainGrid.ColumnDefinitions.Insert(2, columnDefinitionForPinnedSolutionExplorer);
+          btnSolutionExplorer.Visibility = Visibility.Collapsed;
+        }
+        else
+        {
+          mainGrid.ColumnDefinitions.Remove(columnDefinitionForPinnedSolutionExplorer);
+          btnSolutionExplorer.Visibility = Visibility.Visible;
+          solutionExplorer.Visibility = Visibility.Collapsed;
+        }
+      }
+    }
 
     private void OnPointerPressed(object sender, PointerRoutedEventArgs e)
     {
@@ -33,6 +50,11 @@ namespace VisualStudioShell
       HideElementIfNotPressedInside(liveVisualTree, e);
       HideElementIfNotPressedInside(notifications, e);
       HideElementIfNotPressedInside(diagnosticTools, e);
+
+      if (!solutionExplorer.IsPinned)
+      {
+        HideElementIfNotPressedInside(solutionExplorer, e);
+      }
     }
 
     private void HideElementIfNotPressedInside(UIElement elementToHide, PointerRoutedEventArgs e)
@@ -89,6 +111,10 @@ namespace VisualStudioShell
       else if (sender == btnDiagnosticTools)
       {
         diagnosticTools.Visibility = Visibility.Visible;
+      }
+      else if(sender==btnSolutionExplorer)
+      {
+        solutionExplorer.Visibility = Visibility.Visible;
       }
     }
   }

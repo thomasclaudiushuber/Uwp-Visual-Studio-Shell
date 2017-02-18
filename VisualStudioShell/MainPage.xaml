@@ -88,11 +88,11 @@
     <!--3. Toolbar-->
 
     <!--4. Main Area-->
-    <Grid Grid.Row="3">
+    <Grid Grid.Row="3" x:Name="mainGrid">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="Auto"/>
         <ColumnDefinition Width="*"/>
-        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="300" x:Name="columnDefinitionForPinnedSolutionExplorer"/>
         <ColumnDefinition Width="Auto"/>
       </Grid.ColumnDefinitions>
       <Grid Width="{Binding ElementName=sidebarLeft,Path=ActualHeight}">
@@ -115,22 +115,25 @@
         </PivotItem>
       </Pivot>
 
-      <controls:SolutionExplorer Grid.Column="2" Width="300"/>
+      <!--Don't put this control into a column, as we're removing the column definition when it is unpinned and pinned.
+      When it is unpinned, it should hover over the rest (the rest is the Pivot)-->
+      <controls:SolutionExplorer x:Name="solutionExplorer" Width="300" HorizontalAlignment="Right" Grid.ColumnSpan="4" Margin="0 0 30 0"/>
 
       <Grid Grid.Column="3" Width="{Binding ElementName=sidebarRight,Path=ActualHeight}">
         <StackPanel x:Name="sidebarRight" Orientation="Horizontal" VerticalAlignment="Top">
           <StackPanel.RenderTransform>
             <CompositeTransform Rotation="90" TranslateX="{Binding ElementName=sidebarRight,Path=ActualHeight}"/>
           </StackPanel.RenderTransform>
+          <Button Content="Solution Explorer" x:Name="btnSolutionExplorer"  Click="SidebarButton_Click" Style="{StaticResource SideBarButtonRight}" Visibility="Collapsed"/>
           <Button Content="Notifications" x:Name="btnNotifications"  Click="SidebarButton_Click" Style="{StaticResource SideBarButtonRight}"/>
           <Button Content="Diagnostic Tools" x:Name="btnDiagnosticTools" Click="SidebarButton_Click" Style="{StaticResource SideBarButtonRight}"/>
         </StackPanel>
       </Grid>
 
-      <controls:Toolbox x:Name="toolBox" Visibility="Collapsed" Width="200" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
-      <controls:LiveVisualTree x:Name="liveVisualTree" Visibility="Collapsed" Width="400" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
-      <controls:Notifications x:Name="notifications" Visibility="Collapsed" Width="200" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Right"/>
-      <controls:DiagnosticTools x:Name="diagnosticTools" Visibility="Collapsed" Width="350" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Right"/>
+      <controls:Toolbox x:Name="toolBox" Visibility="Collapsed" Width="200" Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="30 0 0 0"/>
+      <controls:LiveVisualTree x:Name="liveVisualTree" Visibility="Collapsed" Width="400" Grid.ColumnSpan="4" HorizontalAlignment="Left" Margin="30 0 0 0"/>
+      <controls:Notifications x:Name="notifications" Visibility="Collapsed" Width="200" Grid.ColumnSpan="4" HorizontalAlignment="Right" Margin="0 0 30 0"/>
+      <controls:DiagnosticTools x:Name="diagnosticTools" Visibility="Collapsed" Width="350" Grid.ColumnSpan="4" HorizontalAlignment="Right" Margin="0 0 30 0"/>
     </Grid>
     
     <!--5. Footer-->

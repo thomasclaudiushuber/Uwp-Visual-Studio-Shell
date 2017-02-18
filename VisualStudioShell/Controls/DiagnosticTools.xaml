@@ -17,7 +17,7 @@
       <Rectangle Fill="{StaticResource VsHighlight}"/>
       <TextBlock Text="Diagnostic Tools" Margin="2" HorizontalAlignment="Left"/>
 
-      <TextBlock Grid.Row="1" Text="Nothing to show here, as we can't debug in this app yet. ;-) Go to the other side of the Window and view for example the Live Visual Tree" 
+      <TextBlock Grid.Row="1" Text="Nothing to show here, as we can't debug in this app yet. Sorry! :) Go to the other side of the Window and view for example the Live Visual Tree, or try to unpin the Solution Explorer"
                  Margin="5" TextWrapping="Wrap"/>
     </Grid>
   </Border>

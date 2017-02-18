@@ -148,6 +148,8 @@
     <Content Include="Images\Menu\NewWebsite.png" />
     <Content Include="Images\SolutionExplorer\FileXaml.png" />
     <Content Include="Images\SolutionExplorer\FileXamlCs.png" />
+    <Content Include="Images\SolutionExplorer\HeaderPinned.png" />
+    <Content Include="Images\SolutionExplorer\HeaderUnpinned.png" />
     <Content Include="Images\SolutionExplorer\ProjectCSharp.png" />
     <Content Include="Images\SolutionExplorer\References.png" />
     <Content Include="Images\SolutionExplorer\Solution.png" />

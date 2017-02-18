@@ -17,7 +17,8 @@
       <Rectangle Fill="{StaticResource VsHighlight}"/>
       <TextBlock Text="Toolbox" Margin="2" HorizontalAlignment="Left"/>
 
-
+      <TextBlock Grid.Row="1" Text="There are no usable controls in this group. You can't drag an item to add it, as this is a fake UWP Visual Studio shell. Go to the Live Visual Tree to see at least a little tree view"
+      Margin="5" TextWrapping="Wrap"/>
     </Grid>
   </Border>
 </UserControl>

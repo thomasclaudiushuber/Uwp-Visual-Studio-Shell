@@ -60,6 +60,12 @@ mc:Ignorable="d"
       </Grid.RowDefinitions>
       <Rectangle Fill="{StaticResource VsHighlight}"/>
       <TextBlock Text="Solution Explorer" Margin="2" HorizontalAlignment="Left"/>
+      <Button x:Name="buttonPin" Click="SolutionExplorerPinButton_Click" HorizontalAlignment="Right">
+        <Grid>
+          <Image Width="16" Height="16" Source="/Images/SolutionExplorer/HeaderPinned.png" x:Name="imgPinned"/>
+          <Image Width="16" Height="16" Source="/Images/SolutionExplorer/HeaderUnpinned.png" x:Name="imgUnpinned" Visibility="Collapsed"/>
+        </Grid>
+      </Button>
 
       <tv:TreeView Grid.Row="1" x:Name="treeView" 
                    ItemTemplate="{StaticResource treeViewItemTemplate}"

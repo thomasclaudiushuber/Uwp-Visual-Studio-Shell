@@ -1,29 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
+﻿using System.ComponentModel;
 using TreeViewControl;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
-// The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
 namespace VisualStudioShell.Controls
 {
-  public sealed partial class SolutionExplorer : UserControl
+  public sealed partial class SolutionExplorer : UserControl, INotifyPropertyChanged
   {
+    public event PropertyChangedEventHandler PropertyChanged;
+    private bool _isPinned = true;
+
     public SolutionExplorer()
     {
       this.InitializeComponent();
       this.Loaded += SolutionExplorer_Loaded;
+    }
+
+    public bool IsPinned
+    {
+      get { return _isPinned; }
+      set
+      {
+        _isPinned = value;
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsPinned)));
+      }
     }
 
     private void SolutionExplorer_Loaded(object sender, RoutedEventArgs e)
@@ -100,6 +100,13 @@ namespace VisualStudioShell.Controls
       {
         Data = new TreeNodeData(name, isFolder, image)
       };
+    }
+
+    private void SolutionExplorerPinButton_Click(object sender, RoutedEventArgs e)
+    {
+      IsPinned = !IsPinned;
+      imgPinned.Visibility = IsPinned ? Visibility.Visible : Visibility.Collapsed;
+      imgUnpinned.Visibility = !IsPinned ? Visibility.Visible : Visibility.Collapsed;
     }
   }
 }

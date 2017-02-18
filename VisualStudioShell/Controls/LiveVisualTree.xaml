@@ -48,7 +48,7 @@
       <Rectangle Fill="{StaticResource VsHighlight}"/>
       <TextBlock Text="Live Visual Tree" Margin="2" HorizontalAlignment="Left"/>
 
-      <TextBlock Grid.Row="1" Text="The tree below is the real tree of the application you're currently running. :-)" 
+      <TextBlock Grid.Row="1" Text="The tree below is the real tree of the application you're currently running." 
                  Margin="5" TextWrapping="Wrap"/>
 
       <ScrollViewer Grid.Row="2">
