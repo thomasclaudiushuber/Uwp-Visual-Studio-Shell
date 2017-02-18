@@ -209,17 +209,17 @@
                       </ContentControl.Clip>
                       <Grid Background="{ThemeResource PivotHeaderBackground}">
                         <Grid.RenderTransform>
-                          <CompositeTransform x:Name="HeaderOffsetTranslateTransform"/>
+                          <!--<CompositeTransform x:Name="HeaderOffsetTranslateTransform"/>-->
                         </Grid.RenderTransform>
                         <PivotHeaderPanel x:Name="StaticHeader" Visibility="Collapsed">
-                          <PivotHeaderPanel.RenderTransform>
+                          <!--<PivotHeaderPanel.RenderTransform>
                             <CompositeTransform x:Name="StaticHeaderTranslateTransform"/>
-                          </PivotHeaderPanel.RenderTransform>
+                          </PivotHeaderPanel.RenderTransform>-->
                         </PivotHeaderPanel>
                         <PivotHeaderPanel x:Name="Header">
-                          <PivotHeaderPanel.RenderTransform>
+                          <!--<PivotHeaderPanel.RenderTransform>
                             <CompositeTransform x:Name="HeaderTranslateTransform"/>
-                          </PivotHeaderPanel.RenderTransform>
+                          </PivotHeaderPanel.RenderTransform>-->
                         </PivotHeaderPanel>
                       </Grid>
                     </ContentControl>

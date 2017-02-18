@@ -1,14 +1,9 @@
-﻿using System;
-using System.Linq;
-using VisualStudioShell.Controls;
+﻿using System.Linq;
 using Windows.ApplicationModel.Core;
-using Windows.Foundation;
 using Windows.UI;
-using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 
@@ -23,14 +18,39 @@ namespace VisualStudioShell
 
       SetTitleBar();
       StyleTitleBar();
+      SetCodeContent();
       solutionExplorer.PropertyChanged += SolutionExplorer_PropertyChanged;
+
+    }
+
+    private void SetCodeContent()
+    {
+      richBoxMainPageCodebehind.Document.SetText(Windows.UI.Text.TextSetOptions.None, @"namespace VisualStudioShell
+{
+  public sealed partial class MainPage : Page
+  {
+    public MainPage()
+    {
+      this.InitializeComponent();
+      this.AddHandler(UIElement.PointerPressedEvent, new PointerEventHandler(OnPointerPressed), true);
+
+      SetTitleBar();
+      StyleTitleBar();
+      SetCodeContent();
+      solutionExplorer.PropertyChanged += SolutionExplorer_PropertyChanged;
+      
+    }
+...
+}");
+
+      richBoxMainPage.Document.SetText(Windows.UI.Text.TextSetOptions.None, @"Nothing here yet. Don't forget to write your code in the real Visual Studio, not in this one.");
     }
 
     private void SolutionExplorer_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
     {
-      if(e.PropertyName == nameof(solutionExplorer.IsPinned))
+      if (e.PropertyName == nameof(solutionExplorer.IsPinned))
       {
-        if(solutionExplorer.IsPinned)
+        if (solutionExplorer.IsPinned)
         {
           mainGrid.ColumnDefinitions.Insert(2, columnDefinitionForPinnedSolutionExplorer);
           btnSolutionExplorer.Visibility = Visibility.Collapsed;
@@ -112,7 +132,7 @@ namespace VisualStudioShell
       {
         diagnosticTools.Visibility = Visibility.Visible;
       }
-      else if(sender==btnSolutionExplorer)
+      else if (sender == btnSolutionExplorer)
       {
         solutionExplorer.Visibility = Visibility.Visible;
       }
