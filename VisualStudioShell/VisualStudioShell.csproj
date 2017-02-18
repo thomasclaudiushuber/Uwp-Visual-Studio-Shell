@@ -99,6 +99,8 @@
     <Compile Include="Controls\SolutionExplorer.xaml.cs">
       <DependentUpon>SolutionExplorer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converter\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Converter\GlyphConverter.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -128,6 +130,12 @@
     <Content Include="Images\CloseSolution.ico" />
     <Content Include="Images\Save.ico" />
     <Content Include="Images\SaveAll.ico" />
+    <Content Include="Images\SolutionExplorer\FileCs.png" />
+    <Content Include="Images\SolutionExplorer\FileXaml.png" />
+    <Content Include="Images\SolutionExplorer\FileXamlCs.png" />
+    <Content Include="Images\SolutionExplorer\ProjectCSharp.png" />
+    <Content Include="Images\SolutionExplorer\References.png" />
+    <Content Include="Images\SolutionExplorer\Solution.png" />
     <Content Include="Images\thomas.png" />
     <Content Include="Images\VisualStudioIcon.png" />
     <Content Include="Properties\Default.rd.xml" />
@@ -171,6 +179,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\TreeViewControl\TreeViewControl.vcxproj">
+      <Project>{94560d69-a345-4e44-b897-eaa2b0e23238}</Project>
+      <Name>TreeViewControl</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VisualStudioShell.Controls\VisualStudioShell.Controls.csproj">
       <Project>{a4cb1f68-5c63-4d6f-9066-6501407c5d3b}</Project>
       <Name>VisualStudioShell.Controls</Name>

@@ -114,6 +114,8 @@
           </PivotItem>
         </Pivot>
       </Grid>
+      
+      
 
       <Grid Grid.Column="2">
         <controls:SolutionExplorer/>

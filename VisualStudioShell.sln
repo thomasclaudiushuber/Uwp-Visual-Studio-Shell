@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisualStudioShell", "Visual
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisualStudioShell.Controls", "VisualStudioShell.Controls\VisualStudioShell.Controls.csproj", "{A4CB1F68-5C63-4D6F-9066-6501407C5D3B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TreeViewControl", "TreeViewControl\TreeViewControl.vcxproj", "{94560D69-A345-4E44-B897-EAA2B0E23238}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{6E70D3F1-D05D-4BDC-8A52-B32B16692293}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Controls", "Controls", "{BBE3A0C5-9276-4308-A6F1-96809857515E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,8 +61,27 @@ Global
 		{A4CB1F68-5C63-4D6F-9066-6501407C5D3B}.Release|x64.Build.0 = Release|x64
 		{A4CB1F68-5C63-4D6F-9066-6501407C5D3B}.Release|x86.ActiveCfg = Release|x86
 		{A4CB1F68-5C63-4D6F-9066-6501407C5D3B}.Release|x86.Build.0 = Release|x86
+		{94560D69-A345-4E44-B897-EAA2B0E23238}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{94560D69-A345-4E44-B897-EAA2B0E23238}.Debug|ARM.ActiveCfg = Debug|ARM
+		{94560D69-A345-4E44-B897-EAA2B0E23238}.Debug|ARM.Build.0 = Debug|ARM
+		{94560D69-A345-4E44-B897-EAA2B0E23238}.Debug|x64.ActiveCfg = Debug|x64
+		{94560D69-A345-4E44-B897-EAA2B0E23238}.Debug|x64.Build.0 = Debug|x64
+		{94560D69-A345-4E44-B897-EAA2B0E23238}.Debug|x86.ActiveCfg = Debug|Win32
+		{94560D69-A345-4E44-B897-EAA2B0E23238}.Debug|x86.Build.0 = Debug|Win32
+		{94560D69-A345-4E44-B897-EAA2B0E23238}.Release|Any CPU.ActiveCfg = Release|Win32
+		{94560D69-A345-4E44-B897-EAA2B0E23238}.Release|ARM.ActiveCfg = Release|ARM
+		{94560D69-A345-4E44-B897-EAA2B0E23238}.Release|ARM.Build.0 = Release|ARM
+		{94560D69-A345-4E44-B897-EAA2B0E23238}.Release|x64.ActiveCfg = Release|x64
+		{94560D69-A345-4E44-B897-EAA2B0E23238}.Release|x64.Build.0 = Release|x64
+		{94560D69-A345-4E44-B897-EAA2B0E23238}.Release|x86.ActiveCfg = Release|Win32
+		{94560D69-A345-4E44-B897-EAA2B0E23238}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{93B47051-1900-4376-8AAF-B8F11CDC68F5} = {6E70D3F1-D05D-4BDC-8A52-B32B16692293}
+		{A4CB1F68-5C63-4D6F-9066-6501407C5D3B} = {BBE3A0C5-9276-4308-A6F1-96809857515E}
+		{94560D69-A345-4E44-B897-EAA2B0E23238} = {BBE3A0C5-9276-4308-A6F1-96809857515E}
 	EndGlobalSection
 EndGlobal
