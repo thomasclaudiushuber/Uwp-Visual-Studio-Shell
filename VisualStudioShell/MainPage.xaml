@@ -94,6 +94,7 @@
     </Grid>
 
     <!--3. Toolbar-->
+    <!--Note: Commandbar could be an option, but it doesn't do the classic stacking from left to right--> 
     <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="10 0 0 0">
       <StackPanel.Resources>
         <Style TargetType="ComboBox">
